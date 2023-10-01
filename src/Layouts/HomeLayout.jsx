@@ -50,7 +50,7 @@ function HomeLayout({ children }){
                 </div>
                 <div className='drawer-side w-0'>
                     <label htmlFor="my-drawer" className='drawer-overlay'></label>
-                    <ul className="menu p-4 w-60 sm:w-80 bg-base-200 text-base-content relative">
+                    <ul className="menu p-4 w-60 h-screen sm:w-80 bg-base-200 text-base-content relative">
                         <li className='w-fit absolute right-2 z-50'>
                             <button onClick={hideDrawer}>
                                 <AiFillCloseCircle size={24} />
@@ -77,12 +77,12 @@ function HomeLayout({ children }){
                         </li>
 
                         {!isLoggedIn && (
-                            <li className=''>
+                            <li className='absolute bottom-4 w-[90%]'>
                                 <div className='w-full flex items-center justify-center'>
-                                    <button className='btn-primary px-4 py-1 font-semibold rounded-md w-full'>
+                                    <button className='btn-primary px-4 py-2 font-semibold rounded-md w-full'>
                                         <Link to="/login">Login</Link>
                                     </button>
-                                    <button className='btn-secondary px-4 py-1 font-semibold rounded-md w-full'>
+                                    <button className='btn-secondary px-4 py-2 font-semibold rounded-md w-full'>
                                         <Link to="/login">Sign up</Link>
                                     </button>
                                 </div>
@@ -90,12 +90,12 @@ function HomeLayout({ children }){
                         )}
 
                         {isLoggedIn && (
-                            <li className=''>
+                            <li className='absolute bottom-4 w-[90%]'>
                                 <div className='w-full flex items-center justify-center'>
-                                    <button className='btn-primary px-4 py-1 font-semibold rounded-md w-full'>
+                                    <button className='btn-primary px-4 py-2 font-semibold rounded-md w-full'>
                                         <Link to="/user/profile">Profile</Link>
                                     </button>
-                                    <button className='btn-secondary px-4 py-1 font-semibold rounded-md w-full'>
+                                    <button className='btn-secondary px-4 py-2 font-semibold rounded-md w-full'>
                                         <Link onClick={handleLogout}>Logout</Link>
                                     </button>
                                 </div>
