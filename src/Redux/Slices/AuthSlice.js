@@ -39,22 +39,27 @@ export const logIn = createAsyncThunk("auth/login", async (data) => {
     }
 })
 
+export const logOut = createAsyncThunk("auth/logout", async () => {
+    try {
+        const res = axiosInstance.get("user/logout");
+        toast.promise(res, {
+            loading: 'Wait! Logging you out...',
+            success: (data) => data?.data?.message || 'Logged out successfully',
+            error: 'Failed to Logout',
+        })
+        return (await res).data;
+    } catch (error) {
+        toast.error(error?.message);
+    }
+})
+
 const AuthSlice = createSlice({
     name: 'auth',
     initialState,
     reducers: {},
     extraReducers: (builder) => {
-        builder.addCase(logIn.fulfilled, (state, action)=>{
-            console.log(action)
-            localStorage.setItem('isLoggedIn', true);
-            localStorage.setItem('role', action?.payload?.user?.role);
-            localStorage.setItem('data', JSON.stringify(action?.payload?.user));
-            state.isLoggedIn = true;
-            state.role = action?.payload?.role;
-            state.data = action?.payload?.user;
-        })
         // [createAccount.fulfilled]: (state, action) => {
-        //     localStorage.setItem('isLoggedIn', true);
+            //     localStorage.setItem('isLoggedIn', true);
         //     localStorage.setItem('role', action.payload.role);
         //     localStorage.setItem('data', JSON.stringify(action.payload.data));
         //     state.isLoggedIn = true;
@@ -69,6 +74,26 @@ const AuthSlice = createSlice({
         //     state.role = action.payload.role;
         //     state.data = action.payload.data;
         // },
+        //                  OR
+        builder
+        .addCase(logIn.fulfilled, (state, action)=>{
+            console.log(action)
+            localStorage.setItem('isLoggedIn', true);
+            localStorage.setItem('role', action?.payload?.user?.role);
+            localStorage.setItem('data', JSON.stringify(action?.payload?.user));
+            state.isLoggedIn = true;
+            state.role = action?.payload?.role;
+            state.data = action?.payload?.user;
+        }) 
+        .addCase(logOut.fulfilled, (state)=>{
+            // localStorage.removeItem('isLoggedIn');
+            // localStorage.removeItem('role');
+            // localStorage.removeItem('data');
+            localStorage.clear();
+            state.isLoggedIn = false;
+            state.role = "";
+            state.data = {};
+        })
     }
 })
 
