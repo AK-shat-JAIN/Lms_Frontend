@@ -14,7 +14,7 @@ function HomeLayout({ children }){
     const isLoggedIn = useSelector((state) => state?.auth?.isLoggedIn);
 
     //for displaying the options according to the role
-    const role = useSelector((state) => state?.auth?.user?.role);
+    const role = useSelector((state) => state?.auth?.role);
 
     function changeWidth(){
         const drawerSilde = document.getElementsByClassName('drawer-side');
@@ -65,6 +65,11 @@ function HomeLayout({ children }){
                         {isLoggedIn && role === 'ADMIN' && (
                             <li>
                                 <Link to="/admin/dashboard">Admin Dashboard</Link>
+                            </li>
+                        )}
+                        {isLoggedIn && role === 'ADMIN' && (
+                            <li>
+                                <Link to="/course/create">Create New Course</Link>
                             </li>
                         )}
 
