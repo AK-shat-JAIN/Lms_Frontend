@@ -77,12 +77,12 @@ const AuthSlice = createSlice({
         //                  OR
         builder
         .addCase(logIn.fulfilled, (state, action)=>{
-            console.log(action)
+            // console.log(action)
             localStorage.setItem('isLoggedIn', true);
             localStorage.setItem('role', action?.payload?.user?.role);
             localStorage.setItem('data', JSON.stringify(action?.payload?.user));
             state.isLoggedIn = true;
-            state.role = action?.payload?.role;
+            state.role = action?.payload?.user?.role;
             state.data = action?.payload?.user;
         }) 
         .addCase(logOut.fulfilled, (state)=>{

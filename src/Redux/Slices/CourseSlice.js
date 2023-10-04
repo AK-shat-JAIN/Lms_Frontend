@@ -27,7 +27,6 @@ const CourseSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder.addCase(getAllCourses.fulfilled, (state, action)=>{
-            console.log(action.payload)
             state.courseList = [...action.payload];
         })
     }
