@@ -20,7 +20,7 @@ export const createAccount = createAsyncThunk("auth/signup", async (data) => {
         res = await res;
         return res.data;
     } catch (error) {
-        toast.error(error?.message);
+        toast.error(error?.response?.data?.message);
     }
 })
 
