@@ -86,12 +86,12 @@ function HomeLayout({ children }){
                         {!isLoggedIn && (
                             <li className='absolute bottom-4 w-[90%]'>
                                 <div className='w-full flex items-center justify-center'>
-                                    <button className='btn-primary px-4 py-2 font-semibold rounded-md w-full'>
-                                        <Link to="/login">Login</Link>
-                                    </button>
-                                    <button className='btn-secondary px-4 py-2 font-semibold rounded-md w-full'>
-                                        <Link to="/signup">Sign up</Link>
-                                    </button>
+                                    <Link className='btn-primary px-4 py-2 text-center font-semibold rounded-md w-full' to="/login">
+                                        Login
+                                    </Link>
+                                    <Link className='btn-secondary px-4 py-2 text-center font-semibold rounded-md w-full' to="/signup">
+                                        Sign up
+                                    </Link>
                                 </div>
                             </li>
                         )}
@@ -99,12 +99,12 @@ function HomeLayout({ children }){
                         {isLoggedIn && (
                             <li className='absolute bottom-4 w-[90%]'>
                                 <div className='w-full flex items-center justify-center'>
-                                    <button className='btn-primary px-4 py-2 font-semibold rounded-md w-full'>
-                                        <Link to="/user/profile">Profile</Link>
-                                    </button>
-                                    <button className='btn-secondary px-4 py-2 font-semibold rounded-md w-full'>
-                                        <Link onClick={handleLogout}>Logout</Link>
-                                    </button>
+                                    <Link className='btn-primary px-4 py-2 text-center font-semibold rounded-md w-full' to="/user/profile">
+                                        Profile
+                                    </Link>
+                                    <Link className='btn-secondary px-4 py-2 text-center font-semibold rounded-md w-full' onClick={handleLogout}>
+                                        Logout
+                                    </Link>
                                 </div>
                             </li>
                         )}

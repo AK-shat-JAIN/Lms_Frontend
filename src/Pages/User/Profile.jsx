@@ -27,7 +27,7 @@ function Profile(){
                         <div>
                             <p>{userData?.email}</p>
                             <p>{userData?.role}</p>
-                            <p>{userData?.subscription?.status==="ACTIVE" ? "Active" : "Inactive"}</p>
+                            <p>{userData?.subscription?.status==="active" ? "Active" : "Inactive"}</p>
                         </div>
                     </div>
                     <div className="flex flex-col sm:flex-row justify-center items-center gap-2">
@@ -38,7 +38,7 @@ function Profile(){
                             <button>Edit Profile</button>
                         </Link>
                     </div>
-                    {userData?.subscription?.status!=="ACTIVE" && (
+                    {(userData?.subscription?.status==="active") && (
                         <button className="w-full bg-red-600 hover:bg-red-500 transition-all ease-in-out duration-300 rounded-sm font-semibold py-2 cursor-pointer text-center">
                             Cancel Subscription
                         </button>
